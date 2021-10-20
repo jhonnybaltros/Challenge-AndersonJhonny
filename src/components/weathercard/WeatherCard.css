@@ -1,0 +1,33 @@
+.popupcard{
+    position: relative;
+    text-align: center;
+    justify-items: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 30%);
+    margin: 12px 0 0;
+    width: 80vw;
+    height: 126px;
+    z-index: 12;
+    background: white;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.column:last-child {
+  border-right: none;
+}
+
+@media screen and (min-width: 650px) {
+  .popupcard{
+    width: 450px;
+  }  
+}
