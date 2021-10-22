@@ -5,7 +5,7 @@ import './Map.css'
 
 require('dotenv').config()
 
-const loader = new Loader({ apiKey: "AIzaSyDymfsnjCoUvtIVlycHDJBWY7TrxdtgTY4"});
+const loader = new Loader({ apiKey: process.env.GOOGLE_API_KEY});
 
 export default function Map({ city, address, onAddressChange, temperature, onCoordinateChange}) {
 

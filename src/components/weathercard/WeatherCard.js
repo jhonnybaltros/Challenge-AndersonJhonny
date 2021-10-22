@@ -21,7 +21,7 @@ function WeatherCard({address, onTemperatureChange, temperatures, coordinates}) 
   const temperaturesWithoutCurrent = [...temperatures].splice(1, temperatures.length-1);
 
   useEffect(() => {
-    console.log('leruaite: ', temperatures);
+    console.log(temperatures);
     if(coordinates?.lat && coordinates?.lng) {
       const {lat, lng } = coordinates;
       fetchWeather({lat, lng }).then((temperaturesResponse) => {

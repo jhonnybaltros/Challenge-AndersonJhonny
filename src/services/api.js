@@ -1,6 +1,6 @@
 const fetchWeather = async ({lat, lng}) => {
   
-    const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&appid=db12bab5b337edff75b23703b2d07bb9`)
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&appid=${process.env.WEATHER_API.KEY}`)
     const data = await response.json()
 
     const { current, daily } = data
@@ -18,7 +18,7 @@ const fetchWeather = async ({lat, lng}) => {
 }
   
 const fetchAddressFromLocation = async ({lat, lng}) => {
-  const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&result_type=political&key=AIzaSyDymfsnjCoUvtIVlycHDJBWY7TrxdtgTY4`) 
+  const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&result_type=political&key=${process.env.GOOGLE_API_KEY}`) 
   const { results } = await response.json()
   const { formatted_address } = results[0]
 
@@ -27,13 +27,13 @@ const fetchAddressFromLocation = async ({lat, lng}) => {
 }
 
 const fetchUserGeolocation = async () => {
-  const response = await fetch('https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyDymfsnjCoUvtIVlycHDJBWY7TrxdtgTY4', {method: "POST"})
+  const response = await fetch(`https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.GOOGLE_API_KEY}`, {method: "POST"})
     const {location: {lat, lng}} = await response.json()
     return {lat, lng}
 }
 
 const fetchGeoCodeFromCityName = async (city) => {
-  const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=AIzaSyDymfsnjCoUvtIVlycHDJBWY7TrxdtgTY4`);
+  const response = await fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=${process.env.GOOGLE_API_KEY}`);
 
   const { results } = await response.json()
   const { geometry } = results[0];
